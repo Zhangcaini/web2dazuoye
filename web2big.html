@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>web2大作业</title>
+	<script>
+	    function getStyle(obj, attr){
+        	if(obj.currentStyle){
+        		return obj.currentStyle[attr];
+        	} else {
+        		return getComputedStyle(obj, null)[attr];
+        	}
+        }
+        function animate(obj,json,callback){
+        	clearInterval(obj.timer);
+        	obj.timer = setInterval(function(){
+        		var isStop = true;
+        		for(var attr in json){
+        			var now = 0;
+        			if(attr == 'opacity'){
+        				now = parseInt(getStyle(obj,attr)*100);
+        			}else{
+        				now = parseInt(getStyle(obj,attr));
+        			}
+        			var speed = (json[attr] - now) / 8;
+        			speed = speed>0?Math.ceil(speed):Math.floor(speed);
+        			var cur = now + speed;
+        			if(attr == 'opacity'){
+        				obj.style[attr] = cur / 100;
+        			}else{
+        				obj.style[attr] = cur + 'px';
+        			}
+        			if(json[attr] !== cur){
+        				isStop = false;
+        			}
+        		}
+        		if(isStop){
+        			clearInterval(obj.timer);
+        			callback&&callback();
+        		}
+        	}, 30)
+        }
+	</script>
+	<style>
+	    *{
+	    	padding: 0;
+	    	margin: 0;
+	    }
+	    .clear::after{
+	    	content:"";
+    	    height:0;
+    	    display: block;
+        }
+	    .shouye{
+	    	width: 1260px;
+	    	height: 1065px;
+	    	margin:0 auto;
+	    }
+	    .bang{
+	    	width: 100%;
+	    	height: 110px;
+	    	background-color: #ffffff;
+	    	margin: 0 auto;
+	    }
+	    .bb{
+	    	width: 1000px;
+	    	height: 110px;
+	    	margin:0 auto;
+	    }
+	    .bbox{
+	    	width: 1000px;
+	    	height: 30px;
+	    }
+	    .bp{
+	    	color: #9a9791;
+	    	font-size: 10px;
+	    	margin-top: 5px;
+	    	margin-right: 250px;
+	    	float: left;
+	    }
+	    .QQ li{
+	    	font-size: 10px;
+	    	float: left;
+	    	color: #9a9791;
+	    	margin-top: 5px;
+	    	margin-left: 15px;
+	    	list-style-type: none;
+	    }
+	    .QQ li img{
+	    	width: 15px;
+	    	height: 15px;
+	    }
+	    .liz{
+	    	color: #ff4d04;
+	    }
+	    .bimg{
+	    	width: 1000px;
+	    	height: 85px;
+	    	margin:10px auto;
+	    }
+	    .bimg img{
+	    	margin-right: 90px;
+	    	float: left;
+	    }
+	    .inp{
+	    	width: 480px;
+	    	height: 70px;
+	    	float: left;
+	    }
+	    .inp input{
+	    	width: 400px;
+	    	height: 40px;
+	    	color: #9a9791;
+	    	border-radius: 1px;
+	    	border:2px solid #fe6c00;
+	    }
+	    .souquanwang{
+	    	width: 72px;
+	    	height: 40px;
+	    	float: right;
+	    	color: #ffffff;
+	    	background-color: #fe6c00;
+	    	text-align: center;
+	    	border:2px solid #fe6c00;
+	    	border-radius: 1px;
+	    }
+	    .souq{
+	    	width: 250px;
+	    	height: 40px;
+	    }
+	    .qiuqiu{
+	    	width: 500px;
+	    	height: 20px;
+	    	margin-top: 10px;
+	    }
+	    .qiuqiu img{
+	    	margin-right: 5px;
+	    	width: 2px;
+	    	height: 10px;
+	    	float: right;
+	    }
+	    .qiuqiu p {
+	    	width: 50px;
+	    	height: 10px;
+	    	font-size: 5px;
+	    	float: left;
+	    }
+	    .souq{
+	    	width: 200px;
+	    	height: 50px;
+	    	margin-left: 50px;
+	    	float: left;
+	    }
+	    .souq1{
+	    	width: 60px;
+	    	height: 30px;
+	    	font-size: 3px;
+	    	border:0.5px solid #9a9791;
+	    	float: left;
+	    }
+	    .souq2{
+	    	width: 70px;
+	    	height: 30px;
+	    	font-size: 3px;
+	    	background-color: #fe6c00;
+	    	border:0.5px solid #9a9791;
+	    	color: #ffffff;
+	    	text-align: center;
+	    	float: left;
+	    }
+	    .souq2 img{
+	    	width: 15px;
+	    	height: 15px;
+	    	margin-top: 2px;
+	    	margin-right: 0px;
+	    }
+	    .kuai{
+	    	width: 1000px;
+	    	height: 30px;
+	    	margin:0 auto;
+	    }
+	    .kuaik{
+	    	width: 170px;
+	    	height: 30px;
+
+	    	float: left;
+	    }
+	    .kuaikk{
+	    	width: 700px;
+	    	height: 30px;
+	    	float: left;
+	    }
+	    .kuaikk p{
+	    	width: 80px;
+	    	height: 30px;
+	    	font-size: 15px;
+	    	text-align: center;
+	    	float: left;
+	    }
+	    .kuaikk img{
+	    	width: 10px;
+	    	height: 15px;
+	    	margin-top:0px;
+	    	margin-left: 0px;
+	    	float: right;
+	    }
+	    .hr{
+	    	color: #9a9791;
+	    }
+	    .dang{
+	    	width: 100%;
+	    	height: 550px;
+	    	margin:0 auto;
+	    	background-color: #f8f7f6;
+	    }
+	    .dd{
+	    	width: 1000px;
+	    	height: 550px;
+	    	margin:0 auto;
+	    	background-color: #ffffff;
+	    }
+	    .yinqin{
+	    	width: 170px;
+	    	height: 550px;
+	    	float: left;
+	    }
+	    .yq1{
+	    	width: 30px;
+	    	height: 430px;
+	    	background-color: #4c4c4a;
+	    	color: #ff4d04;
+	    	float: left;
+	    }
+	    .yq1 p{
+	    	width: 1px;
+	    	margin-left: 5px;
+	    	margin-bottom: 10px;
+	    }
+	    .yq2{
+	    	width: 140px;
+	    	height: 430px;
+	    	float: left;
+	    }
+	    .yq2 ul{
+	    	width: 125px;
+	    	height: 25px;
+	    	font-size: 10px;
+	    	margin-left: 10px;
+	    	margin-bottom:8px;
+	    	list-style-type: none;
+	    }
+	    .yq2 ul li{
+	    	margin-right: 10px;
+	    	float: left;
+	    }
+	    .yq3{
+	    	width: 170px;
+	    	height: 130px;
+	    }
+	    .yq3 img{
+	    	margin-right: 5px;
+	    	width: 15px;
+	    	height: 15px;
+	    }
+	    .yq3 p{
+	    	font-size: 15px;
+	    	color: #855d38;
+	    	margin-bottom: 10px;
+	    	margin-left: 10px;
+	    }
+	    .box{
+	    	width: 640px;
+	    	height: 550px;
+	    	position: relative;
+	    	overflow: hidden;
+	    	float: left;
+	    	}
+	    .slider{
+	    	width: 8400px;
+	    	height: 350px;
+	    	position: absolute;
+	    	left:-640px;
+	    	}
+	    .slide{
+	    	width: 640px;
+	    	overflow: hidden;
+	    	float: left;
+	    }
+ 	    .slider img{
+	    	width: 640px;
+	    	height: 350px;
+	    }
+        .box>span{
+        	display: block;
+        	width: 30px;
+        	height: 50px;
+        	text-align: center;
+        	cursor: pointer;
+        	color: #fff;
+        	top: 175px;
+        	line-height: 50px;
+        	background: rgb(255,0,0);
+        	font-size: 30px;
+        	position: absolute;
+        	opacity: 0;
+        }
+        #left{
+        	left: 30px;
+        	}
+        #right{
+        	right: 30px;
+        }
+        .nav{
+        	position: absolute;
+        	left: 200px;
+        	top:330px;
+        }
+        .nav>li{
+        	float: left;
+        	width: 20px;
+        	height: 20px;
+        	background: #ccc;
+        	cursor: pointer;
+	        margin: 0 10px;
+        	border-radius: 50%;
+        	list-style-type: none;
+        }
+        .nav .active{
+        	background: red;
+        }
+        .boximg{
+        	width: 640px;
+        	height: 200px;
+        	margin-top: 350px;
+        }
+        .boximg img{
+        	width: 160px;
+        	height: 200;
+        }
+        .boxii{
+        	width: 160px;
+        	height: 200px;
+        	float: left;
+        }
+        .kuaixun{
+        	width: 180px;
+        	height: 350px;
+        	float: left;
+        }
+        .kkx1{
+        	width: 180px;
+        	height: 30px;
+        	margin-top:10px;
+        }
+        .kkx1 img{
+        	float: left;
+        }
+        .kkx1 p{
+        	color: #ff9260;
+        	margin-right: 70px;
+        	margin-left: 20px;
+        	font-size: 13px;
+        	float: left;
+        }
+        .kkx2{
+        	width: 180px;
+        	height: 268px;
+        	overflow: hidden;
+        }
+        .kkx2 li{
+        	color: #ff9260;
+        	font-size: 13px;
+        	margin-top: 7px;
+        }
+        .kkx3{
+
+        }
+        .kkx3 p{
+        	margin-top: 10px;
+        	margin-left: 10px;
+        	margin-bottom: 5px;
+        	font-size: 10px;
+        }
+        .kkx3 input{
+        	margin-left: 10px;
+        	margin-bottom: 10px;
+        }
+        .kkx3 img{
+        	margin-right: 15px;
+        }
+        .kkx3 button{
+        	background-color: #ff4d04;
+        	width: 170px;
+        	margin-left:10px;
+        	border-radius:5px;
+        	border:none;
+        }
+        .shiyong{
+        	padding-left: 25px;
+        	color: #ff4d04;
+        }
+        .kkx3 select{
+        	margin-left: 10px;
+        }
+        .qian{
+        	color: #ff4d04;
+        }
+        .tao{
+        	width: 1260px;
+        	height: 180px;
+        	background-color: #f8f7f6;
+        }
+        .tao1{
+        	width: 1000px;
+        	height: 180px;
+        	margin:0 auto;
+        	background-color: #f8f7f6;
+        }
+        .tt1{
+        	width: 150px;
+        	height: 185px;
+        	float: left;
+        }
+        .tt2{
+        	width: 600px;
+        	height: 160px;
+        	margin-left: 80px;
+        	float: left;
+        }
+        .gouwu{
+        	color: #201f18;
+        	font-size: 15px;
+        }
+        .tt2 ul{
+        	margin-top: 30px;
+        	margin-right: 40px;
+        	font-size: 10px;
+        	list-style-type: none;
+        	float: left;
+        }
+        .tt2 li{
+        	color: #666560;
+        	margin-bottom: 10px;
+        }
+        .tt3{
+        	margin-left: 40px;
+        	margin-top: 30px;
+        	float: left;
+        }
+        .zuihou{
+        	text-align: center;
+        	width: 1260px;
+        	height:  180px;
+        	background-color: #f8f7f6;
+        }
+        .zh{
+
+        	width: 1000px;
+        	height: 180px;
+        	margin:0 auto;
+        	background-color: #f8f7f6;
+        }
+        .zh1{
+        	width: 700px;
+        	height: 30px;
+        	list-style-type: none;
+        }
+        .zh ul li{
+        	list-style-type: none;
+        	color: #666560;
+        	margin-right: 10px;
+        	font-size: 10px;
+        	float: left;
+        }
+        .zh p{
+        	color: #9a9791;
+        	font-size: 5px;
+
+        }
+        .zh1 img{
+        	float: left;
+        	width: 
+        }
+        .rang{
+        	width: 100%;
+        	margin:0 aoto;
+        }
+	</style>
+</head>
+<body>
+    <div class="shouye">
+    	<div class="bang">
+    		<div class="bb">
+    			<div class="bbox clear">
+    				<p class="bp">帮5买，享帮帮</p>
+    				<ul class="QQ clear">
+    				    <li class="qimg"><img src="img/QQ.gif" height="25" width="30" alt=""></li>
+    				    <li class="qimg"><img src="img/weixin.gif" height="30" width="30" alt=""></li>
+    				    <li class="qimg"><img src="img/weibo.gif" height="22" width="24" alt=""></li>
+    				    <li>登录</li>
+    				    <li>注册</li>
+    				    <li><img src="img/xinfeng_03.gif" height="17" width="22" alt="">消息</li>
+    				    <li><img src="img/dingdan.jpg" height="14" width="13" alt="">我的订单</li>
+    				    <li>我的收藏</li>
+    				    <li>帮钻兑换</li>
+    				    <li><img src="img/phone.png" height="17" width="10" alt="">手机版</li>
+    				    <li>帮5淘</li>
+    				    <li>客户服务</li>
+    				    <li><img src="img/gouwuche.jpg" height="16" width="18" alt="">购物车</li>
+    				    <li><img src="img/z_03.gif" height="15" width="11" alt=""></li>
+    			    </ul>
+    			</div>
+    			<div class="BB">
+    				<div class="bimg">
+    				<img src="img/logo_03.jpg" height="62" width="141" alt="">
+    				<div class="inp clear">
+    					<input class="clear" type="text" value="输入商品网址或关键词，直通全网，快速帮5购">
+    					<div class="souquanwang clear">搜全网</div>
+    					<div class="qiuqiu">
+    						<p>洗发护发<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>日本纸尿裤<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>身体乳<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>内衣文胸<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>iPhone 6s<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>ipad Air2<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>牛仔裤<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>奶粉<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>防晒霜<img src="img/shuxian.jpg" height="150" width="1" alt=""></p>
+    						<p>伞</p>
+    					</div>
+    				</div>
+    				<div class="souq">
+    				    <div class="souq1">
+    				    	<img src="img/erji_03.gif" height="15" width="25" alt="">
+    				        <p>400-085-0505</p>
+    				    </div>
+    				    <div class="souq1">
+    				    	<img src="img/xinfeng_03.gif" height="17" width="22" alt="">
+    				    	<p>mc@b5m.com</p>
+    				    </div>
+    				    <div class="souq2"><img src="img/dd_03.jpg" height="22" width="22" alt="">常见问题</div>
+    				</div>
+    				</div>
+    			</div>
+    		</div>
+        </div>
+
+
+
+
+
+
+        <div class="rang">
+        	<div class="kuai">
+    				<div class="kuaik"><p>全部分类</p></div>
+    				<div class="kuaikk">
+    					<p>帮5赚</p>
+    					<p>帮韩品</p>
+    					<p>超划算</p>
+    					<p>品牌栈货</p>
+    					<p>韩国馆</p>
+    					<p>帮社区</p>
+    					<p>1元兑奖<img src="img/hot.gif" height="22" width="25" alt=""</p>
+    				</div>
+    			</div>
+        </div>
+
+
+
+
+    	<hr>
+    	<div class="dang">
+    		<div class="dd">
+    			<div class="yinqin">
+    				<div class="yq1"><p>当前搜索引擎</p><p>全网</p></div>
+    				<div class="yq2">
+    					<ul>
+    					    <li>手机</li>
+    						<li>数码</li>
+    						<li>影音</li>
+    						<li>配件</li>
+    					</ul>
+    					<ul>
+    						<li>电脑</li>
+    						<li>网络</li>
+    						<li>办公</li>
+    						<li>打印</li>
+    					</ul>
+    					<ul>
+    						<li>家电</li>
+    						<li>厨卫</li>
+    						<li>生活</li>
+    						<li>个户</li>
+    					</ul>
+    					<ul>
+    						<li>园艺</li>
+    						<li>家具</li>
+    						<li>家纺</li>
+    						<li>家饰</li>
+    					</ul>
+    					<ul>
+    						<li>彩妆</li>
+    						<li>面部</li>
+    						<li>身体</li>
+    						<li>香水</li>
+    					</ul>
+    					<ul>
+    						<li>男装</li>
+    						<li>女装</li>
+    						<li>内衣</li>
+    						<li>其他</li>
+    					</ul>
+    					<ul>
+    						<li>男鞋</li>
+    						<li>女鞋</li>
+    						<li>男包</li>
+    						<li>女包</li>
+    					</ul>
+    					<ul>
+    						<li>运动</li>
+    						<li>户外</li>
+    						<li>装备</li>
+    						<li>服饰</li>
+    					</ul>
+    					<ul>
+    					    <li>儿童</li>
+    						<li>婴儿</li>
+    						<li>食品</li>
+    						<li>玩具</li>
+    					</ul>
+    					<ul>
+    						<li>乐器</li>
+    						<li>家宠</li>
+    						<li>收藏</li>
+    						<li>鲜花</li>
+    					</ul>
+    					<ul>
+    						<li>保健</li>
+    						<li>理疗</li>
+    						<li>药品</li>
+    						<li>眼镜</li>
+    					</ul>
+    					<ul>
+    						<li>果蔬</li>
+    						<li>礼品</li>
+    						<li>粮油</li>
+    						<li>特产</li>
+    					</ul>
+    					<ul>
+    						<li>文艺</li>
+    						<li>科技</li>
+    						<li>生活</li>
+    						<li>教育</li>
+    					</ul>
+    				</div>
+    				<hr>
+    				<div class="yq3">
+    					<p><img src="img/dd_03.jpg" height="22" width="22" alt="">什么是帮5购</p>
+    					<p><img src="img/dd_06.jpg" height="22" width="22" alt="">帮5购提供什么服务</p>
+    					<p><img src="img/dd_08.jpg" height="22" width="22" alt="">如何开通帮5购服务</p>
+    				</div>
+    			</div>
+    			<div class="box" id="box">
+    				<div class="slider clear" id="slider">
+    					<div class="slide"><img src="img/bann6.png" alt=""></div>
+    					<div class="slide"><img src="img/bann1.jpeg" alt=""></div>
+    					<div class="slide"><img src="img/bann2.jpeg" alt=""></div>
+    					<div class="slide"><img src="img/bann3.jpeg" alt=""></div>
+    					<div class="slide"><img src="img/bann4.jpeg" alt=""></div>
+    					<div class="slide"><img src="img/bann5.jpeg" alt=""></div>
+    					<div class="slide"><img src="img/bann6.png" alt=""></div>
+    					<div class="slide"><img src="img/bann1.jpeg" alt=""></div>
+    					<img src="img/1(1).jpg" height="183" width="200" alt="">
+    					<img src="img/2.jpg" height="183" width="200" alt="">
+    					<img src="img/3(1).png" height="183" width="200" alt="">
+    					<img src="img/qqq.png" height="183" width="200" alt="">
+    				</div>
+    				<span id="left"></span>
+    				<span id="right"></span>
+    				<ul class="nav clear" id="nav">
+    					<li class="active">1</li>
+    					<li>2</li>
+    					<li>3</li>
+    					<li>4</li>
+    					<li>5</li>
+    					<li>6</li>
+    				</ul>
+    				<div class="boximg">
+    					<div class="boxii"><img src="img/1(1).jpg" height="183" width="200" alt=""></div>
+    					<div class="boxii"><img src="img/2.jpg" height="183" width="200" alt=""></div>
+    					<div class="boxii"><img src="img/3(1).png" height="183" width="200" alt=""></div>
+    					<div class="boxii"><img src="img/qqq.png" height="183" width="200" alt=""></div>
+    				</div>
+    			</div>
+
+
+
+
+
+
+    			<div class="kuaixun">
+    					<div class="kx1">
+    						<div class="kkx1">
+    							<img src="img/ico-notice.png" height="15" width="16" alt="">
+    						    <p>帮帮快讯</p>
+    						    <img src="img/jiantou.jpg" height="9" width="11" alt="">
+    						</div>
+    						<hr>
+    						<div class="kkx2" id = "demo" onmouseover="stop()" onmouseout="start()">
+    							<ul id="demo1">
+<!--     							    <li>[公告]&nbsp&nbsp帮购及VIP服务调整11</li> -->
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整1</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整2</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整3</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整4</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整5</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整6</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整7</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整8</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整9</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整10</li>
+    								<li>[公告]&nbsp&nbsp帮购及VIP服务调整11</li>
+<!--     								<li>[公告]&nbsp&nbsp帮购及VIP服务调整1</li> -->
+    							</ul>
+    							<ul id="demo2"></ul>
+    						</div>
+    						<hr>
+    						<div class="kkx3">
+    							<p><img src="img/tp-my-phone.png" height="14" width="8" alt="">花费充值<span class="shiyong">(可使用超级帮钻)</span></p>
+    							<input type="text" value="请输入手机号">
+    							<select name="huafei" id="o1">
+    								<option value="30" selected="">30</option>
+    								<option value="50">50</option>
+    							</select>
+    							<p class="qian" id="content">￥30</p>
+    							<button>充值</button>
+    						</div>
+    					</div>
+    			</div>
+    		</div>
+
+
+
+
+    	</div>
+    	<div class="tao">
+    		<div class="tao1">
+    		    <div class="tt1"><img src="img/loginB.jpg" height="181" width="149" alt=""></div>
+    		    <div class="tt2">
+    		    	<ul>
+    		    	    <li class="gouwu">购物指南</li>
+    		    		<li>如何下单</li>
+    		    		<li>帮5购流程</li>
+    		    		<li>订单查询</li>
+    		    		<li>物流配送</li>
+    		    	</ul>
+    		    	<ul>
+    		    		<li class="gouwu">支付设置</li>
+    		    		<li>安全设置</li>
+    		    		<li>账户信息</li>
+    		    	</ul>
+    		    	<ul>
+    		    		<li class="gouwu">售后服务</li>
+    		    		<li>取消订单</li>
+    		    		<li>申请售后</li>
+    		    		<li>退货流程</li>
+    		    		<li>退货相关</li>
+    		    	</ul>
+    		    	<ul>
+    		    		<li class="gouwu">VIP服务</li>
+    		    		<li>如何成为VIP</li>
+    		    		<li>超级帮钻</li>
+    		    	</ul>
+    		    	<ul>
+    		    		<li class="gouwu">帮韩品</li>
+    		    		<li>韩国正品</li>
+    		    		<li>闪电发货</li>
+    		    		<li>帮韩品售后</li>
+    		    	</ul>
+    		    	<ul>
+    		    		<li class="gouwu">更多</li>
+    		    		<li>手机app</li>
+    		    		<li>帮5采app</li>
+    		    		<li>帮5淘插件</li>
+    		    		<li>其他</li>
+    		    	</ul>
+    		    </div>
+    		    <div class="tt3">
+    		    	<img src="img/erweima.jpg" height="144" width="120" alt="">
+    		    </div>
+    		</div>
+    	</div>
+    	<div class="zuihou">
+    	    <div class="zh">
+    	        <hr>
+    		    <div class="zh1">
+    		        <ul>
+    				    <li>关于帮5买</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>联系我们</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>合作商家</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>友情链接</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>加入我们</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>移动应用</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>热门</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>广告联盟</li>
+    				    <li><img src="img/shuxian.jpg" height="17" width="1" alt=""></li>
+    				    <li>使用条款</li>
+    			    </ul>
+    		    </div>
+    			<p>Copyright @ 2011-2015 B5M.COM.ALL rigthts resever.Powered by B5Msoft Co.,Ltd</p>
+    		    <p>增值电信业务经营许可证:沪:B2-20130065号 | 中午人民共和国互联网药品信息服务资格证书（沪）- 非经营性 - 2013-0034沪卫(中医)网申【2015】10032号 沪ICP备 11034776号-3|食品流通许可证;</p>
+    		    <p>SP3101151410301755</p>
+    		    <div class="zh11">
+    		    	<img src="img/bo1.gif" height="47" width="47" alt="">
+    		    	<img src="img/bo2.png" height="40" width="112" alt="">
+    		    	<img src="img/bo3.gif" height="42" width="96" alt="">
+    		    	<img src="img/bo4.png" height="47" width="127" alt="">
+    		    	<img src="img/bo5.png" height="40" width="110" alt="">
+    		    	<img src="img/bo6.png" height="40" width="106" alt="">
+    		    	<img src="img/bo7.png" height="52" width="150" alt="">
+    		    </div>
+    		</div>
+    	</div>
+    </div>
+    <script>
+         window.onload = function(){
+         	var cover = document.getElementsByClassName("bang")[0];
+         	window.onscroll = function(){
+         		var st = document.documentElement.scrollTop || document.body.scrollTop;
+         		if(st>180){
+         			cover.style.position = "fixed";
+         		}else{
+         			cover.style.position = "static";
+         		}
+         	}
+
+
+         }
+
+
+        var demo = document.getElementById("demo");
+        var demo1 = document.getElementById("demo1");
+        var demo2 = document.getElementById("demo2");
+        demo2.innerHTML=demo1.innerHTML;
+        var gundong = function(){
+        	demo.scrollTop++;
+        	if(demo.scrollTop>=demo1.offsetHeight){
+        		demo.scrollTop;
+        	}
+        }
+        var gd = setInterval(gundong,100);
+        var stop = function(){
+        	clearInterval(gd);
+        }
+        var start= function(){
+        	gd = setInterval(gundong,100);
+        }
+
+
+        var o1 = document.getElementById("o1");
+        var content = document.getElementById("content");
+
+        o1.onclick = function(){
+        	if(o1.value==30){
+        		content.innerHTML = "￥30";
+        	}
+        	if(o1.value==50){
+        		content.innerHTML = "￥50";
+        	}
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        var box = document.getElementById('box');
+		var oNavlist = document.getElementById('nav').children;
+		var slider = document.getElementById('slider');
+		var left = document.getElementById('left');
+		var right = document.getElementById('right');
+		var index = 1;
+		var timer;
+		var isMoving = false;
+		box.onmouseover = function(){
+			animate(left,{opacity:50})
+			animate(right,{opacity:50})
+			clearInterval(timer)
+		}
+		box.onmouseout = function(){
+			animate(left,{opacity:0})
+			animate(right,{opacity:0})
+			timer = setInterval(next, 3000);
+		}
+		right.onclick = next;
+		left.onclick = prev;
+		for( var i=0; i<oNavlist.length; i++ ){
+			oNavlist[i].index = i;
+			oNavlist[i].onclick = function(){
+				index = this.index+1;
+				navmove();
+				animate(slider,{left:-640*index});
+			}
+		}
+		function next(){
+			if(isMoving){
+				return;
+			}
+			isMoving = true;
+			index++;
+			navmove();
+			animate(slider,{left:-640*index},function(){
+				if(index==7){
+					slider.style.left = '-640px';
+					index = 1;
+				}
+				isMoving = false;
+			});
+		}
+		function prev(){
+			if(isMoving){
+				return;
+			}
+			isMoving = true;
+			index--;
+			navmove();
+			animate(slider,{left:-640*index},function(){
+				if(index==0){
+					slider.style.left = '-3840px';
+					index = 6;
+				}
+				isMoving = false;
+			});
+		}
+		function navmove(){
+			for( var i=0; i<oNavlist.length; i++ ){
+				oNavlist[i].className = "";
+			}
+			if(index >6 ){
+				oNavlist[0].className = "active";
+			}else if(index<=0){
+				oNavlist[5].className = "active";
+			}else {
+				oNavlist[index-1].className = "active";
+			}
+		}
+		timer = setInterval(next, 3000);
+    </script>
+</body>
+</html>
