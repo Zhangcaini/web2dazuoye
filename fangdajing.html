@@ -15,7 +15,7 @@
         }
 	    .xiangqingye{
 	    	width: 1260px;
-	    	height: 1065px;
+	    	height: 1280px;
 	    	margin:0 auto;
 	    }
 	    .toubu{
@@ -453,6 +453,56 @@
 	    	width: 40px;
 	    	height: 40px;
 	    }
+	    .daping{
+	    	width: 100%;
+	    	height: 2000px;
+	    	background-color: rgba(222,220,216,0.5);
+	    	display: none;
+	    	position: relative;
+	    	margin-top: -2000px;
+	    }
+	    .center{
+	    	width: 400px;
+	    	height: 220px;
+	    	position: fixed;
+	    	margin-top: 900px;
+	    	margin-left: 450px;
+	    	border:2px solid #aca9d3;
+	    	background-color: #ffffff;
+	    }
+	    .cha{
+	    	margin-left: 380px;
+	    }
+	    .duigou{
+	    	margin-top: 30px;
+	    	text-align: center;
+	    }
+	    .wenzi{
+	    	font-size: 25px;
+	    	color: #676660;
+	    }
+	    .jixu button{
+	    	width: 150px;
+	    	height: 35px;
+	    	float: left;
+	    	border-radius: 15px;
+	    	margin-left: 30px;
+	    	margin-top: 50px;
+	    	border:1px solid #ff0754;
+	    	color: #ff0754;
+	    	background-color: #ffffff;
+	    }
+	    .jiesuan button{
+	        width: 150px;
+	    	height: 35px;
+	    	float: left;
+	        margin-left: 30px;
+	    	margin-top: 50px;
+	    	border-radius: 15px;
+	    	border:1px solid #ff0754;
+	    	color: #ffffff;
+	    	background-color: #ff0754;
+	    }
 	</style>
 </head>
 <body>
@@ -574,7 +624,7 @@
     			        <div class="xuanze">
     			        	<p class="xz1">您已选择<span class="xxz1" id="nin">"150ml"</span></p>
     			        	<button class="b1">立即购买</button>
-    			        	<button class="b2">加入购物车</button>
+    			        	<button class="b2" id="nihao">加入购物车</button>
     			        </div>
     				</div>
     			</div>
@@ -672,6 +722,21 @@
     		</div>
     	</div>
     </div>
+    <div class="daping" id="daping">
+    	<div class="center">
+    		<div class="cha" id="cha">X</div>
+    		<div class="duigou">
+    		    <img src="img/lvse_03.gif" height="37" width="51" alt="">
+    		    <span class="wenzi">商品已加入购物车</span>
+    		</div>
+    		<div class="jixu" id="jixu">
+    			<button>继续购物</button>
+    		</div>
+    		<div class="jiesuan" id="jiesuan">
+    			<button>去购物车结算</button>
+    		</div>
+    	</div>
+    </div>
     <script>
         var img1 = document.getElementById("img1");
         var img2 = document.getElementById("img2");
@@ -751,6 +816,26 @@
         }
 
 
+
+        var daping = document.getElementById("daping")
+        var cha =document.getElementById("cha");
+        var jixu  = document.getElementById('jixu');
+        var jiesuan = document.getElementById("jiesuan");
+        var nihao = document.getElementById("nihao");
+
+
+        cha.onclick = function(){
+        	daping.style.display="none";
+        }
+        jixu.onclick=function(){
+        	daping.style.display="none";
+        }
+        jiesuan.onclick=function(){
+        	daping.style.display="none";
+        }
+        nihao.onclick=function(){
+        	daping.style.display="block";
+        }
 
         
 

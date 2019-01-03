@@ -61,6 +61,7 @@
 	    	height: 110px;
 	    	background-color: #ffffff;
 	    	margin: 0 auto;
+	    	z-index: 999;
 	    }
 	    .bb{
 	    	width: 1000px;
@@ -216,7 +217,9 @@
 	    .dd{
 	    	width: 1000px;
 	    	height: 550px;
-	    	margin:0 auto;
+/* 	    	margin:0 auto; */
+            margin-left: 100px;
+	    	float: left;
 	    	background-color: #ffffff;
 	    }
 	    .yinqin{
@@ -485,6 +488,56 @@
         	width: 100%;
         	margin:0 aoto;
         }
+        .tankuang{
+        	width: 100px;
+        	height: 470px;
+        	position: fixed;
+
+        }
+        .timg2{
+        	width: 60px;
+        	height: 140px;
+        	float: left;
+        }
+        .ttk1{
+        	width: 60px;
+        	height: 140px;
+        	float: left;
+        	background-color: #ff9260;
+        }
+        .tk1{
+        	width: 160px;
+        	height: 113px;
+        	margin-left: 1220px;
+        }
+        .tk2{
+        	width: 160px;
+        	height: 113px;
+        	margin-left: 1220px;
+        }
+        .tk3{
+        	width: 120px;
+        	height:113px;
+        	background-color: #ff9260;
+        	margin-left: 1220px;
+        }
+        .tk4{
+        	width: 120px;
+        	height: 100px;
+        	margin-left: 1220px;
+        }
+        .timg3{
+        	width: 20px;
+        	height: 20px;
+
+        	float: left;
+        }
+        .timg4{
+        	width: 60px;
+        	height: 90px;
+        	margin-left: 10px;
+        	float: left;
+        }
 	</style>
 </head>
 <body>
@@ -689,15 +742,9 @@
     					<div class="boxii"><img src="img/1(1).jpg" height="183" width="200" alt=""></div>
     					<div class="boxii"><img src="img/2.jpg" height="183" width="200" alt=""></div>
     					<div class="boxii"><img src="img/3(1).png" height="183" width="200" alt=""></div>
-    					<div class="boxii"><img src="img/qqq.png" height="183" width="200" alt=""></div>
+    					<div class="boxii"><a href="fangdajing.html"><img src="img/qqq.png" height="183" width="200" alt=""></a></div>
     				</div>
     			</div>
-
-
-
-
-
-
     			<div class="kuaixun">
     					<div class="kx1">
     						<div class="kkx1">
@@ -738,10 +785,29 @@
     					</div>
     			</div>
     		</div>
-
-
-
-
+    		<div class="tankuang" id="tankuang">
+    	        <div class="tk1" id="tk1">
+    	            <img src="img/consult-s.png" height="60" width="120" alt="">
+    			    <img src="img/xiaobang.png" height="45" width="120" alt="">
+    		    </div>
+    		    <div class="tk2" id="tk2">
+    			    <div class="timg2"><img src="img/youhui.png" height="140" width="60" alt=""></div>
+    			    <div class="ttk1">
+    			        <p>未登录</p>
+    				    <button>登录</button>
+    			    </div>
+    		    </div>
+    		    <div class="tk3" id="tk3">
+    			    <div><img src="img/app.png" height="20" width="120" alt=""></div>
+    			    <div class="ttk2">
+    			        <div class="timg3"><img src="img/serwei.png" height="20" width="20" alt=""></div>
+    				    <div class="timg4"><img src="img/erwei.png" height="60" width="90" alt=""></div>
+    			    </div>
+    		    </div>
+    		    <div class="tk4" id="tk4">
+    			    <img src="img/cart.png" height="140" width="120" alt="">
+    		    </div>
+    	    </div>
     	</div>
     	<div class="tao">
     		<div class="tao1">
@@ -958,6 +1024,56 @@
 			}
 		}
 		timer = setInterval(next, 3000);
+
+
+
+        var box1 = document.getElementById("tankuang");
+        var tk1 = document.getElementById("tk1");
+        var tk2 = document.getElementById("tk2");
+        var tk3 = document.getElementById("tk3");
+        var tk4 = document.getElementById("tk4");
+        tk1.onmouseover = move1;
+        tk1.onmouseout = move2;
+        tk2.onmouseover = move3;
+        tk2.onmouseout = move4;
+        tk3.onmouseover = move5;
+        tk3.onmouseout = move6;
+        tk4.onmouseover = move7;
+        tk4.onmouseout = move8;
+
+		function move1(){
+			animate(tk1,{marginLeft:1150},function(){
+			});
+		}
+		function move2(){
+			animate(tk1,{marginLeft:1220},function(){
+			});
+		}
+		function move3(){
+			animate(tk2,{marginLeft:1150},function(){
+			});
+		}
+		function move4(){
+			animate(tk2,{marginLeft:1220},function(){
+			});
+		}
+		function move5(){
+			animate(tk3,{marginLeft:1150},function(){
+			});
+		}
+		function move6(){
+			animate(tk3,{marginLeft:1220},function(){
+			});
+		}
+		function move7(){
+			animate(tk4,{marginLeft:1150},function(){
+			});
+		}
+		function move8(){
+			animate(tk4,{marginLeft:1220},function(){
+			});
+		}
+
     </script>
 </body>
 </html>
